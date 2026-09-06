@@ -1,0 +1,7 @@
+install.packages("dplyr")
+library(dplyr)
+df <- data.frame(patient_id = c("P001", "P002", "Poo3"), ae = c(54,61,47))
+summary(df)
+renv::snapshot()
+renv::deactivate()
+renv::activate()
