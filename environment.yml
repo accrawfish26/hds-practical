@@ -1,0 +1,6 @@
+name: repro-demo
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pandas=2.2
