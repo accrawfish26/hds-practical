@@ -1,0 +1,8 @@
+FROM condaforge/miniforge3:latest
+WORKDIR /hds-practical-lab1
+COPY environment.yml .
+RUN mamba env create -f environment.yml && mamba clean -afy
+COPY scripts/analyze.py .
+SHELL ["conda", "run", "-n", "repro-demo", "/bin/bash", "-c"]
+CMD ["conda", "run", "--no-capture-output", "-n", "repro-demo", "python", "analyze.py"]
+
