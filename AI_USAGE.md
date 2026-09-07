@@ -38,6 +38,23 @@
 **My edits**: I recall from class and from the above about this fact and had went ahead and used the `mv` to move the `.R` and `.py` into the folder and rerun the git commands to upload successfully. 
 
 ========================
+### Prompt 4
 
+** Tried to perform docker for both R and Python environment and had to learn that I cannot merge 2 two seperate sources into one place. I end up using what was shared through class follow along to help build an understanding of docker##
+
+**Chat GPT initaial response**: "Yes. Since you've developed the R/renv and Mamba Dockerfiles separately, the next step is to combine them into one Dockerfile. But there's one important issue first: you can't combine two `from` lines into one Dockerfile. You need to choose one base image and install the other environmet into it.
+
+**Chat GPT recommendation**: I'd recommend using the Miniforge/Mamba image as the base, then install R and `renv` into that same container.
+
+**My edits**: I decided against that reccomendation and create two different container for each respective program for Mamba - envionrment.yml and R - renv.lock. I then did the `docker build -f DockerfileMa` and `docker run --rm hds-practical-lab1` to get the reproducible output. This was then added to github.
+
+### 4.5
+**Tried to perform `docker run --rm hds-practical-lab1` and had learned about understanding what commands are file names that I need to be clear/consistant with.
+
+**Chat GPT initial response**: "The error means you haven't built an image named `hds-practical-lab1` yet. 
+
+**Chat GPT recommendation**: "If your dockerfile is named `dockerfilema` then `docker build -f DockerfileMa -t hds-practical-lab1 .
+
+**My edits**: I realised that hds-practical-lab1 was related to an old testing when playing with the docker commands that I had kept when trying to run. From GPT recommendation, I replaced the `hds-practical-lab1` with `dockerfilema` and that had worked.
 
 
