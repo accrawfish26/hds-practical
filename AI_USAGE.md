@@ -12,7 +12,7 @@ I first asked ChatGPT what this error meant, then asked how to fix it.
 
 **ChatGPT suggested fix:** The fix is to remove the `numphy=1.19` requirement from `environment.yml`. That version is too old for panda 2.2.  
 
-**My edit:** I had followed the recommendation by editing my code to remove `numphy=1.19`. By removing the package, it had resolved the error that prevented `environment.yml` file to run
+**My edit:** I had followed the recommendation by editing my code to remove `numphy=1.19`. By removing the package, I was able to verify the error was resolved that prevented `environment.yml` file to run.
    
 =========================
 ### Prompt 2
@@ -50,7 +50,7 @@ I first asked ChatGPT what this error meant, then asked how to fix it.
 
 **Chat GPT suggested fix:** Since you're currently on `master`, rename the local branch to `main` with `git branch -m master main`. Then push `main` to GitHub and set it as the upstream: `git push -u origin main`
 
-**My edit:** I follow the recommendation by redirecting branch with `git push -u origin main` with the directory /c/users/crawf/desktop/accrawfish26/hs-practical.git (main).
+**My edit:** I follow the recommendation by redirecting branch with `git push -u origin main` with the directory /c/users/crawf/desktop/accrawfish26/hs-practical.git (main). I verrified it by seeing the change of master to main within the terminal and where that the data was now stored in the main branch within my repository. 
 
 **Model:** ChatGPT  
 **Error:**
@@ -64,7 +64,7 @@ I first asked ChatGPT what this error meant, then asked how to fix it.
 
 **Chat GPT suggested fix:** fix hs-practical.git to hds-practical.git to directory
 
-**My edit:** I fixed the spelling error and had sucessfully pushed branch to switch from `master` to `main` that allowed for sucessful `git push` with `renv.lock` file to the git repository. 
+**My edit:** I fixed the spelling error and had sucessfully pushed branch to switch from `master` to `main` that allowed for sucessful `git push` with `renv.lock` file to the git repository. I was able to verify as the change in spelling removed the error.
 
 =========================
 ### Prompt 3
@@ -79,7 +79,7 @@ I first asked ChatGPT what this error meant, then asked how to fix it.
 
 **ChatGPT suggested fix:** Use `docker build -f DockerfileMamba -t dockerfilema .` to specifiy the name of file with `-f` that will allow for docker to run expected output with `docker run --rm dockerfilema`.
 
-**My edits:** I had realised that I had changed the file name and had added the `-f` function. I edit the suggestion to specificy for `Dockerfilema` file that I wanted to be used for the Docker container. This had fixed the error.
+**My edits:** I had realised that I had changed the file name and had added the `-f` function. I edit the suggestion to specificy for `Dockerfilema` file that I wanted to be used for the Docker container. I was able to verify the error was gone because the function now had produced the desired container that can be found in the git repository.
 
 ========================
 ### Prompt 4
@@ -95,5 +95,5 @@ I first asked ChatGPT what this error meant, then asked how to fix it.
 
 **ChatGPT suggested fix:** The second FROM replaces the first stage. It does not combine them. So your container would be based on `FROM rocker/r-ver:4.5.1` only. Should be `install.packages` not `install packages.` I recommend starting with the R image and installing Mamba into it, rather than trying to combine two FROM statements.
 
-**My edits:** For the first sugestion, I kept closer to the class practical, so I emmited the R FROM to keep only `FROM condaforge/miniforge3:latest`. I had fixed the spelling mistake. For the third, I had edited this by realising I can have two seperate container for each programming envionrment that would prevent the suggestion of downloading Mamba into R. It would be simpler to separate. This led to the `docker run --rm hds-practical-lab1` to get the reproducible output into github.
+**My edits:** For the first sugestion, I kept closer to the class practical, so I emmited the R FROM to keep only `FROM condaforge/miniforge3:latest`. I had fixed the spelling mistake. For the third, I had edited this by realising I can have two seperate container for each programming envionrment that would prevent the suggestion of downloading Mamba into R. It would be simpler to separate. This led to the `docker run --rm hds-practical-lab1` to get the reproducible output into github. I was able to verify all the above by deciding and acheiving python container for Docker. 
 
