@@ -27,7 +27,7 @@
 =========================
 ### Prompt 3
 
-**A silly mistake in hinsight, but was trying to push the scripts/ folder but was not working. I had asked and shared similar to number 2  error where it shows nothing to commit after i performed `git add`.**
+**A silly mistake in hinsight, but was trying to push the scripts/ folder but was not working. I had asked and shared full error that was simalar to number 2   where it said there is nothing to commit after I performed `git add`.**
 
 **Chat GPT initial response**: "Yes - and this output tells us something useful. You ran: `git add scripts` but `git status` doesn't show scripts/ as untracked, because Git is apparently already tracking the files inside scripts." 
 
@@ -35,7 +35,7 @@
 
 **Chat GPT recommendation**: "If you put a file inside it, then `git add scripts/` `git commit -m "Add scripts"` `git push` will put the folder in GitHub."
 
-**My edits**: I recall from class and from the above about this fact and had went ahead and used the `mv` to move the `.R` and `.py` into the folder and rerun the git commands to upload successfully. 
+**My edits**: I recall from class and from the above about empty folders cannot be added to Git. I had went ahead and used the `mv` to move the `.R` and `.py` scripts into the folder and ran the git commands again to upload successfully. 
 
 ========================
 ### Prompt 4
