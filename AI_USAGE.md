@@ -1,60 +1,99 @@
 ## AI Usage transparency
 
 ### Prompt 1
+**Model:** ChatGPT  
+**Error:** 
+```
+error libmamba Could not solve for environment specs The following packages are incompatible ├─ numpy =1.19 * is requested and can be installed; └─ pandas =2.2 * is not installable because there are no viable options ├─ pandas [2.2.0|2.2.1|2.2.2] would require │ └─ numpy >=1.22.4,<2.0a0 *, which conflicts with any installable ver; ├─ pandas [2.2.0|2.2.1|2.2.2] would require │ └─ numpy >=1.23.5,<2.0a0 *, which conflicts with any installable ver; ├─ pandas 2.2.0 would require │ └─ numpy >=1.26.3,<2.0a0 *, which conflicts with any installable ver; ├─ pandas [2.2.1|2.2.2] would require │ └─ numpy >=1.26.4,<2.0a0 *, which conflicts with any installable ver; ├─ pandas [2.2.2|2.2.3] would require │ └─ numpy [>=1.22.4 *|>=1.22.4,<3 *] but there are no viable options │ ├─ numpy [1.23.5|1.24.0|...|1.26.2] conflicts with any installabl; │ ├─ numpy 1.26.3 conflicts with any installable versions previousl; │ ├─ numpy 1.26.4 conflicts with any installable versions previousl; │ ├─ numpy [1.22.4|1.23.0|...|1.23.4] conflicts with any installabl; │ ├─ numpy [2.0.0|2.0.1|...|2.5.2] conflicts with any installable v; │ └─ numpy 2.5.0rc1 would require │ └─ _numpy_rc =* *, which does not exist (perhaps a missing cha; └─ pandas 2.2.3 would require └─ numpy >=1.21,<3 * but there are no viable options ├─ numpy [1.23.5|1.24.0|...|1.26.2] conflicts with any installabl; ├─ numpy 1.26.3 conflicts with any installable versions previousl; ├─ numpy 1.26.4 conflicts with any installable versions previousl; ├─ numpy [1.22.4|1.23.0|...|1.23.4] conflicts with any installabl; ├─ numpy [2.0.0|2.0.1|...|2.5.2] conflicts with any installable v; ├─ numpy 2.5.0rc1, which cannot be installed (as previously expla; └─ numpy [1.21.0|1.21.1|...|1.22.3] conflicts with any installabl. critical libmamba Could not solve for environment specs
+```
+I first asked ChatGPT what this error meant, then asked how to fix it.
 
-**Uploaded the full error from the follow-along about error that Mamba cannot create an envionrment because `environment.yml` due to the packages within it.**
+**ChatGPT response:** This means Mamba cannot create the environment because your `envionrment.yml` is asking for two package version that cannot coexist.
 
-**Chat GPT initial response**: "This means Mamba cannot create the environment because your `envionrment.yml` is asking for two package version that cannot coexist"
+**ChatGPT suggested fix:** The fix is to remove the `numphy=1.19` requirement from `environment.yml`. That version is too old for panda 2.2.  
 
-**Chat GPT recommendation**: "The fix is to remove the `numphy=1.19` requirement from `environment.yml`. That version is too old for panda 2.2.
-
-**My edits**: I had followed the recommendation by removing `numphy=1.19` and had successfully resolved the error and was able to use `environment.yml`
-
-
+**My edit:** I had followed the recommendation by editing my code to remove `numphy=1.19`. By removing the package, it had resolved the error that prevented `environment.yml` file to run
+   
 =========================
 ### Prompt 2
+**Model:** ChatGPT  
+**Error:**
+```
+error: failed to push some refs to 'https://github.com/accrawfish26/hds-practical'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+(base)
+crawf@ACcrawfish MINGW64 /c/users/crawf/desktop/app_comp_hds/app-comp-hds-r (main)
+$ git push https://github.com/accrawfish26/hds-practical
+fatal: The upstream branch of your current branch does not match
+the name of your current branch.  To push to the upstream branch
+on the remote, use
 
-**Uploaded the full error when attempting to push my `renv.lock` through `git push` and was returned that there is nothing to update.**
+git push https://github.com/accrawfish26/hds-practical HEAD:master
 
-**Chat GPT initial response**: "The key issue is: `renv.lock` is not showing under `git status` as untracked because it is already tracked by Git (or otherwise already knwon to Git), but your other files are untracked... Notice renv.lock is NOT in that list."
+To push to the branch of the same name on the remote, use
 
-"One other important thing, your promt says: /c/users/crawf/desktop/app_comp_hds/app-comp-hds-r (master) and your `git pull` says: ... * branch master -> FETCH_HEAD. So you're working on the master branch, not main."
+git push https://github.com/accrawfish26/hds-practical HEAD
 
-**Chat GPT recommendation**: "Since you're currently on `master`, rename the local branch to `main` with `git branch -m master main`. Then push `main` to GitHub and set it as the upstream: `git push -u origin main`"
+To choose either option permanently, see push.default in 'git help config'.
 
-**My edits**: I had followed the recommendation and learned about the importance of paying attention to branches and how to switch between them. I swapped back to main and was able to push renv.lock into the GitHub. 
+To avoid automatically configuring an upstream branch when its name
+won't match the local branch, see option 'simple' of branch.autoSetupMerge
+in 'git help config'.
+```
+I first asked ChatGPT what this error meant, then asked how to fix it.
+
+**Chat GPT inital response:** The key issue is: `renv.lock` is not showing under `git status` as untracked because it is already tracked by Git (or otherwise already knwon to Git), but your other files are untracked. /c/users/crawf/desktop/app_comp_hds/app-comp-hds-r (master) and your `git pull` says: ... * branch master -> FETCH_HEAD. So you're working on the master branch, not main.
+
+**Chat GPT suggested fix:** Since you're currently on `master`, rename the local branch to `main` with `git branch -m master main`. Then push `main` to GitHub and set it as the upstream: `git push -u origin main`
+
+**My edit:** I follow the recommendation by redirecting branch with `git push -u origin main` with the directory /c/users/crawf/desktop/accrawfish26/hs-practical.git (main).
+
+**Model:** ChatGPT  
+**Error:**
+```
+$ git fetch origin remote: Repository not found. fatal: repository '
+accrawfish26/hs-practical.git' not found
+```
+I first asked ChatGPT what this error meant, then asked how to fix it.
+
+**Chat GPT inital response:** Ah — I see the issue. The remote URL is misspelled.
+
+**Chat GPT suggested fix:** fix hs-practical.git to hds-practical.git to directory
+
+**My edit:** I fixed the spelling error and had sucessfully pushed branch to switch from `master` to `main` that allowed for sucessful `git push` with `renv.lock` file to the git repository. 
 
 =========================
 ### Prompt 3
+**Model:** ChatGPT  
+**Error:** 
+```
+docker build -t dockerfilema . [+] Building 0.1s (1/1) FINISHED docker:desktop-linux => [internal] load build definition from Dockerfile 0.0s => => transferring dockerfile: 2B 0.0s ERROR: failed to build: failed to solve: failed to read dockerfile: open Dockerfile: no such file or directory What's next: Debug this build failure with Gordon → docker ai "help me fix this build failure"
+```
+I first asked ChatGPT what this error meant, then asked how to fix it.
 
-**A silly mistake in hinsight, but was trying to push the scripts/ folder but was not working. I had asked and shared similar to number 2  error where it shows nothing to commit after i performed `git add`.**
+**ChatGPT initial response:** You found the problem. Docker is looking for a file literally named Dockerfile, but you don't have one. The attempted function `docker build -t dockerfilema .` serach for a dockerfile, but no assigned folder have that name.
 
-**Chat GPT initial response**: "Yes - and this output tells us something useful. You ran: `git add scripts` but `git status` doesn't show scripts/ as untracked, because Git is apparently already tracking the files inside scripts." 
+**ChatGPT suggested fix:** Use `docker build -f DockerfileMamba -t dockerfilema .` to specifiy the name of file with `-f` that will allow for docker to run expected output with `docker run --rm dockerfilema`.
 
-"Ah - that's the whole reason. If `ls scripts` shows nothing, then scripts/ is an empty folder. Git does not track empty folders. Git only tracks files."
-
-**Chat GPT recommendation**: "If you put a file inside it, then `git add scripts/` `git commit -m "Add scripts"` `git push` will put the folder in GitHub."
-
-**My edits**: I recall from class and from the above about this fact and had went ahead and used the `mv` to move the `.R` and `.py` into the folder and rerun the git commands to upload successfully. 
+**My edits:** I had realised that I had changed the file name and had added the `-f` function. I edit the suggestion to specificy for `Dockerfilema` file that I wanted to be used for the Docker container. This had fixed the error.
 
 ========================
 ### Prompt 4
 
-** Tried to perform docker for both R and Python environment and had to learn that I cannot merge 2 two seperate sources into one place. I end up using what was shared through class follow along to help build an understanding of docker##
+**Model:** ChatGPT  
+**Error** 
+```
+cat > DockerfileLab1 << 'ENDLab1' > FROM condaforge/miniforge3:latest > FROM rocker/r-ver:4.5.1 > WORKDIR /hds-practical-lab1 > COPY environment.yml . > RUN mamba env create -f environment.yml && mamba clean -afy > COPY renv.lock . > RUN R -e "enstall.packages('renv', version = '1.1.5')" > RUN R -e "renv::restore()" > COPY . . > ENDLab1
+```
+I first asked ChatGPT what this error meant, then asked how to fix it.
 
-**Chat GPT initaial response**: "Yes. Since you've developed the R/renv and Mamba Dockerfiles separately, the next step is to combine them into one Dockerfile. But there's one important issue first: you can't combine two `from` lines into one Dockerfile. You need to choose one base image and install the other environmet into it.
+**ChatGPT inital Response:** You're getting closer, but this Dockerfile will not work yet. There are three things to fix. 1. You have two FROM lines. 2. Typo: `enstall.packages.` 3. We need R + Mamba in the same base. So don't change your existing renv.lock or environment.yml. The next problem to solve is finding/using a base image that provides both R and Conda/Mamba, or installing one into the other.
 
-**Chat GPT recommendation**: I'd recommend using the Miniforge/Mamba image as the base, then install R and `renv` into that same container.
+**ChatGPT suggested fix:** The second FROM replaces the first stage. It does not combine them. So your container would be based on `FROM rocker/r-ver:4.5.1` only. Should be `install.packages` not `install packages.` I recommend starting with the R image and installing Mamba into it, rather than trying to combine two FROM statements.
 
-**My edits**: I decided against that reccomendation and create two different container for each respective program for Mamba - envionrment.yml and R - renv.lock. I then did the `docker build -f DockerfileMa` and `docker run --rm hds-practical-lab1` to get the reproducible output. This was then added to github.
-
-### 4.5
-**Tried to perform `docker run --rm hds-practical-lab1` and had learned about understanding what commands are file names that I need to be clear/consistant with.
-
-**Chat GPT initial response**: "The error means you haven't built an image named `hds-practical-lab1` yet. 
-
-**Chat GPT recommendation**: "If your dockerfile is named `dockerfilema` then `docker build -f DockerfileMa -t hds-practical-lab1 .
-
-**My edits**: I realised that hds-practical-lab1 was related to an old testing when playing with the docker commands that I had kept when trying to run. From GPT recommendation, I replaced the `hds-practical-lab1` with `dockerfilema` and that had worked.
-
+**My edits:** For the first sugestion, I kept closer to the class practical, so I emmited the R FROM to keep only `FROM condaforge/miniforge3:latest`. I had fixed the spelling mistake. For the third, I had edited this by realising I can have two seperate container for each programming envionrment that would prevent the suggestion of downloading Mamba into R. It would be simpler to separate. This led to the `docker run --rm hds-practical-lab1` to get the reproducible output into github.
 
