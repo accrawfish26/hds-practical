@@ -7,6 +7,14 @@ The purpose of this project is to preserve the Python and R environments used to
 **Download Repository**
 Download or clone the repository. The relevant files are...
 ```
+# clone reposetory with...
+git clone https://github.com/accrawfish26/hds-practical.git
+# move into repository directory
+cd hds-practical
+# view inside to check all files are present
+ls
+
+# The files of significant are:
 # environment.yml
 # renv.lock files.
 # analyze.R (script file)
@@ -17,6 +25,7 @@ Download or clone the repository. The relevant files are...
 Open Git Bash/terminal and set directory to the location of the repository files
 ```
 # Open conda to run the bellow function to view the toy patient data
+conda --version # Check if conda running appropriately
 conda env create -f environment.yml
 conda activate repro-demo
 python scripts/analyze.py
@@ -34,6 +43,7 @@ View(df)
 ```
 # Open a terminal with a working directory containing the dockerfilema file
 # Will produce the patient toy data after performing the docker run function
+docker --version # Check if Docker is running appropriately
 docker build -f DockerfileMa -t dockerfilema .
 docker run --rm dockerfilema
 ```
