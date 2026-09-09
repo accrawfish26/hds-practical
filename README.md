@@ -4,30 +4,30 @@ The purpose of this project is to preserve the Python and R environments used to
 
 ## Getting Started
 
-**Downloads**
-Start with downloading 5 things:
+**Download Repository**
+Download or clone the repository. The relevant files are...
 ```
-# environmental.yml
+# environment.yml
 # renv.lock files.
 # analyze.R (script file)
 # analyze.py (script file)
 # DockerfileMa
 ```
 **Reproducing the Python Environment**
-Open a terminal and set directory to the location of downloaded files
+Open Git Bash/terminal and set directory to the location of the repository files
 ```
 # Open conda to run the bellow function to view the toy patient data
 conda env create -f environment.yml
 conda activate repro-demo
-python analyze.py
+python scripts/analyze.py
 ```
 **Reproducing the R Environment**
-Open RStudio and set directory to the location of downloaded files
+Open RStudio and set the working directory to the location of the downloaded repository.
 ```
 # Open RStudio with renv installed with new script to view the toy patient data (saved as df)
-renv::restore
-renv::status
-source(analyze.R)
+renv::restore()
+renv::status()
+source("scripts/analyze.R")
 View(df)
 ```
 **Reproducing the Docker file**
